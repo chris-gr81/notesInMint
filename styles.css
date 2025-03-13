@@ -7,7 +7,7 @@
 
 :root {
   --font-family: "Jost", sans-serif;
-  --app-bg-color: rgb(234, 248, 241);
+  --app-bg-color: rgb(220, 240, 230);
   --content-bg-color: rgb(255, 255, 255);
   --primary-color: 100, 201, 162;
   --primary-color-rgb: rgb(var(--primary-color));
@@ -26,11 +26,18 @@ body {
   flex-direction: column;
   gap: 0.5rem;
 }
-.topnav-ct {
+
+.topnav-ct,
+.sidebar-ct,
+.content-ct {
   background-color: var(--content-bg-color);
   border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   color: var(--font-color);
   padding: 1rem;
+}
+
+.topnav-ct {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -59,10 +66,8 @@ body {
   flex-direction: column;
 }
 .sidebar-ct {
-  background-color: var(--content-bg-color);
   flex: 1;
 }
 .content-ct {
-  background-color: var(--content-bg-color);
   flex: 5;
 }
