@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  height: calc(100vh - 1rem);
 }
 
 .topnav-ct,
@@ -42,6 +43,8 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.5rem;
+  height: 10vh;
+  overflow-y: auto;
 }
 .btn {
   display: flex;
@@ -63,11 +66,115 @@ body {
 
 .main-ct {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  flex: 1;
+  gap: 0.5rem;
+  min-height: 0;
 }
 .sidebar-ct {
   flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 40vh;
+  overflow-y: auto;
 }
+
+.notes-preview {
+  width: calc(50% - 0.5rem);
+  /* flex: 1 1 calc(50% -1rem); */
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: all 0.2 ease-in-out;
+}
+
+.notes-preview:not(.selected-note) {
+  cursor: pointer;
+}
+
+.notes-preview:hover,
+.selected-note {
+  background-color: rgba(var(--primary-color), 0.1);
+}
+
+.preview-title {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.preview-title,
+.preview-text,
+.preview-category {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.preview-text {
+  /* color: var(--font-color-greyed); */
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.preview-category,
+.preview-time {
+  color: var(--font-color-greyed);
+  font-size: 0.75rem;
+  width: 100%;
+  text-align: right;
+  font-style: italic;
+}
+
+.preview-category {
+  font-weight: 700;
+}
+
 .content-ct {
-  flex: 5;
+  flex: 1;
+  overflow: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#title-input,
+#content-input,
+#category-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+}
+
+#title-input::placeholder,
+#content-input::placeholder,
+#category-input::placeholder {
+  color: var(--font-color-greyed);
+}
+
+#title-input {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+#category-input {
+  font-size: 1rem;
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+#content-input {
+  font-size: 1rem;
+  resize: none;
+  flex-grow: 1;
+  height: auto;
+}
+.content-header {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
