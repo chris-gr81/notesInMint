@@ -1,5 +1,6 @@
 const sidebarCtEl = document.querySelector(".sidebar-ct");
 const saveBtnEl = document.querySelector(".save-note");
+const deleteBtnEl = document.querySelector(".delete-note");
 const categoryInputEl = document.querySelector("#category-input");
 const titleInputEl = document.querySelector("#title-input");
 const contentInputEl = document.querySelector("#content-input");
@@ -11,6 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 saveBtnEl.addEventListener("click", () => {
   getUserInput();
+});
+
+deleteBtnEl.addEventListener("click", () => {
+  deleteCurrentNote();
 });
 
 btnNewNoteEl.addEventListener("click", () => {
@@ -58,12 +63,12 @@ function createPreviewNote(note) {
 }
 
 function getUserInput() {
-  let categoryInput = categoryInputEl.value;
+  let categoryInput = parseInput(categoryInputEl.value);
   if (!categoryInput) {
     categoryInput = "Unsortiert";
   }
-  const titleInput = titleInputEl.value;
-  const contentInput = contentInputEl.value;
+  const titleInput = parseInput(titleInputEl.value);
+  const contentInput = parseInput(contentInputEl.value);
   const id = getCurrentId();
 
   if (!titleInput || !contentInput) {
@@ -107,4 +112,24 @@ function clickNewNote() {
   });
   clearInputScreen();
   renderPreviews();
+}
+
+function deleteCurrentNote() {
+  const currentId = getCurrentId();
+  clearInputScreen();
+  deleteNote(currentId);
+  renderPreviews();
+}
+
+function parseInput(text) {
+  if (typeof text !== "string") {
+    return text;
+  }
+
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }

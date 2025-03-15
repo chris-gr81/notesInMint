@@ -38,3 +38,11 @@ function getNextId() {
   }
   return nextId;
 }
+
+function deleteNote(id) {
+  const notes = getNotes();
+  const filteredNotes = notes.filter((note) => {
+    return Number(note.id) !== Number(id);
+  });
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(filteredNotes));
+}
