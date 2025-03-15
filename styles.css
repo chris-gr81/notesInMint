@@ -81,6 +81,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 0.2rem;
+  align-items: center;
 }
 .btn-text {
   font-size: 0.7rem;
@@ -107,12 +108,12 @@ body {
 
 .notes-preview {
   width: calc(50% - 0.5rem);
-  /* flex: 1 1 calc(50% -1rem); */
   box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   transition: all 0.2 ease-in-out;
+  height: fit-content;
 }
 
 .notes-preview:not(.selected-note) {
