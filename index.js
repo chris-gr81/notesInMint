@@ -3,6 +3,7 @@ const saveBtnEl = document.querySelector(".save-note");
 const categoryInputEl = document.querySelector("#category-input");
 const titleInputEl = document.querySelector("#title-input");
 const contentInputEl = document.querySelector("#content-input");
+const btnNewNoteEl = document.querySelector("#new-note");
 
 document.addEventListener("DOMContentLoaded", () => {
   renderPreviews();
@@ -10,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 saveBtnEl.addEventListener("click", () => {
   getUserInput();
+});
+
+btnNewNoteEl.addEventListener("click", () => {
+  clickNewNote();
 });
 
 function renderPreviews() {
@@ -82,8 +87,8 @@ function selectCardByClick(e) {
   });
 
   const notesPreviewEls = document.querySelectorAll(".notes-preview");
-  notesPreviewEls.forEach((element) => {
-    element.classList.remove("selected-note");
+  notesPreviewEls.forEach((e) => {
+    e.classList.remove("selected-note");
   });
 
   e.currentTarget.classList.add("selected-note");
@@ -93,4 +98,13 @@ function selectCardByClick(e) {
 function getCurrentId() {
   const selectedNote = sidebarCtEl.querySelector(".selected-note");
   return selectedNote ? Number(selectedNote.getAttribute("data-id")) : null;
+}
+
+function clickNewNote() {
+  const prevNotesEls = document.querySelectorAll(".notes-preview");
+  prevNotesEls.forEach((e) => {
+    e.classList.remove("selected-note");
+  });
+  clearInputScreen();
+  renderPreviews();
 }
