@@ -67,10 +67,26 @@ body {
   padding: 0.4rem;
   border-radius: 10px;
   border: none;
+}
+
+.new-note,
+.delete-note,
+.save-note {
   background-color: var(--primary-color-rgb);
 }
-.topnav-ct .btn {
+
+.category-btn {
   height: 40px;
+  background-color: rgba(var(--primary-color), 0.3);
+}
+
+.category-btn:not(.selected-category) {
+  cursor: pointer;
+}
+
+.category-btn:hover,
+.selected-category {
+  background-color: var(--primary-color-rgb);
 }
 
 .icon {
