@@ -7,8 +7,6 @@ const contentInputEl = document.querySelector("#content-input");
 const btnNewNoteEl = document.querySelector("#new-note");
 const navbandEl = document.querySelector(".navband");
 
-let currentCategory = "";
-
 document.addEventListener("DOMContentLoaded", () => {
   currentCategory = "Alle";
   renderPreviews();
@@ -44,85 +42,10 @@ function renderContentScreen(currentNote) {
   titleInputEl.value = currentNote.title;
 }
 
-function renderNavband() {
-  navbandEl.innerHTML = "";
-  notes = getNotes();
-  const categoryList = getCategoryList(notes);
-  categoryList.forEach((category) => {
-    if (currentCategory == category.category) {
-      navbandEl.appendChild(createNavbandCategory(category, true));
-    } else {
-      navbandEl.appendChild(createNavbandCategory(category, false));
-    }
-  });
-}
-
-function getCategoryList(notes) {
-  const categoryList = [];
-  const categorySet = new Set();
-  notes.forEach((note) => {
-    categorySet.add(note.category);
-  });
-
-  categoryList.push({ category: "Alle", number: notes.length });
-  categorySet.forEach((setItem) => {
-    let counter = 0;
-    notes.forEach((e) => {
-      if (e.category == setItem) counter++;
-    });
-    categoryList.push({ category: setItem, number: counter });
-  });
-  return categoryList;
-}
-
-function filterCategory(notes) {
-  console.log(currentCategory);
-  if (currentCategory == "Alle") {
-    return notes;
-  } else {
-    const filteredNotes = notes.filter((note) => {
-      console.log(note.category);
-      return note.category == currentCategory;
-    });
-    return filteredNotes;
-  }
-}
-
 function clearInputScreen() {
   categoryInputEl.value = "";
   titleInputEl.value = "";
   contentInputEl.value = "";
-}
-
-function createNavbandCategory(category, haveCat) {
-  const categoryBtn = document.createElement("button");
-  categoryBtn.classList.add("btn");
-  categoryBtn.classList.add("category-btn");
-  console.log(haveCat);
-  if (haveCat) {
-    categoryBtn.classList.add("selected-category");
-  }
-  categoryBtn.setAttribute("data-category", category.category);
-  categoryBtn.addEventListener("click", (e) => {
-    clickOnCategory(e.currentTarget);
-  });
-  categoryBtn.innerHTML = `
-            <div class="btn-inner-wrapper">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                class="icon"
-              >
-                <path
-                  d="M2 3.5A1.5 1.5 0 0 1 3.5 2h2.879a1.5 1.5 0 0 1 1.06.44l1.122 1.12A1.5 1.5 0 0 0 9.62 4H12.5A1.5 1.5 0 0 1 14 5.5v1.401a2.986 2.986 0 0 0-1.5-.401h-9c-.546 0-1.059.146-1.5.401V3.5ZM2 9.5v3A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-3A1.5 1.5 0 0 0 12.5 8h-9A1.5 1.5 0 0 0 2 9.5Z"
-                />
-              </svg>
-              <span class="btn-text">${category.number}</span>
-            </div>
-            <span class="btn-text">${category.category}</span>      
-    `;
-  return categoryBtn;
 }
 
 function createPreviewNote(note) {
@@ -179,17 +102,6 @@ function clickOnCard(e) {
 
   e.currentTarget.classList.add("selected-note");
   renderContentScreen(selectedNote);
-}
-
-function clickOnCategory(selectedCategory) {
-  const categoryBtnEls = document.querySelectorAll(".category-btn");
-  categoryBtnEls.forEach((e) => {
-    e.classList.remove("selected-category");
-  });
-  currentCategory = selectedCategory.dataset.category;
-  renderNavband();
-  renderPreviews();
-  clearInputScreen();
 }
 
 function clickNewNote() {
