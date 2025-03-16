@@ -79,6 +79,7 @@ function getUserInput() {
     return;
   }
   saveNotes(categoryInput, titleInput, contentInput, id);
+  currentCategory = "Alle";
   clearInputScreen();
   renderPreviews();
   renderNavband();
@@ -109,6 +110,7 @@ function clickNewNote() {
   prevNotesEls.forEach((e) => {
     e.classList.remove("selected-note");
   });
+  currentCategory = "Alle";
   clearInputScreen();
   renderPreviews();
   renderNavband();
@@ -121,6 +123,7 @@ function getCurrentId() {
 
 function deleteCurrentNote() {
   const currentId = getCurrentId();
+  currentCategory = "Alle";
   clearInputScreen();
   deleteNote(currentId);
   renderPreviews();

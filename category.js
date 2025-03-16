@@ -44,24 +44,21 @@ function countEntriesByCategory(item) {
 }
 
 function filterCategory(notes) {
-  console.log(currentCategory);
   if (currentCategory == "Alle") {
     return notes;
   } else {
     const filteredNotes = notes.filter((note) => {
-      console.log(note.category);
       return note.category == currentCategory;
     });
     return filteredNotes;
   }
 }
 
-function createNavbandCategory(category, haveCat) {
+function createNavbandCategory(category, isCat) {
   const categoryBtn = document.createElement("button");
   categoryBtn.classList.add("btn");
   categoryBtn.classList.add("category-btn");
-  console.log(haveCat);
-  if (haveCat) {
+  if (isCat) {
     categoryBtn.classList.add("selected-category");
   }
   categoryBtn.setAttribute("data-category", category.category);
