@@ -74,6 +74,11 @@ body {
 .save-note {
   background-color: var(--primary-color-rgb);
 }
+.new-note:hover,
+.delete-note:hover,
+.save-note:hover {
+  background-color: var(--primary-color-hover);
+}
 
 .category-btn {
   height: 40px;
