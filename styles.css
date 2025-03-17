@@ -129,6 +129,9 @@ body {
   padding: 1rem;
   transition: all 0.2s ease-in-out;
   height: fit-content;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .notes-preview:not(.selected-note) {
@@ -149,7 +152,7 @@ body {
 .preview-title,
 .preview-text,
 .preview-category {
-  width: 100%;
+  max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
