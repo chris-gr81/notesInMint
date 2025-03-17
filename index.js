@@ -79,7 +79,7 @@ function getUserInput() {
     return;
   }
   saveNotes(categoryInput, titleInput, contentInput, id);
-  currentCategory = "Alle";
+  currentCategory = categoryInput;
   clearInputScreen();
   renderPreviews();
   renderNavband();
@@ -122,8 +122,15 @@ function getCurrentId() {
 }
 
 function deleteCurrentNote() {
+  const notes = getNotes();
   const currentId = getCurrentId();
-  currentCategory = "Alle";
+  const selectedCategory = getCurrentCategoryById(currentId);
+  const entriesInCategory = countEntriesByCategory(selectedCategory);
+  if (entriesInCategory > 1) {
+    currentCategory = selectedCategory;
+  } else {
+    currentCategory = "Alle";
+  }
   clearInputScreen();
   deleteNote(currentId);
   renderPreviews();

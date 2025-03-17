@@ -94,3 +94,11 @@ function clickOnCategory(selectedCategory) {
   renderPreviews();
   clearInputScreen();
 }
+
+function getCurrentCategoryById(id) {
+  const notes = getNotes();
+  const currentNote = notes.find((note) => {
+    return note.id == id;
+  });
+  return currentNote.category;
+}
