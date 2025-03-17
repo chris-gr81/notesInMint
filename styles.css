@@ -112,23 +112,22 @@ body {
 }
 
 .sidebar-ct {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: min-content;
   gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-height: 40vh;
+  height: 40vh;
   overflow-y: auto;
+  padding: 0.5rem;
 }
 
 .notes-preview {
-  width: calc(50% - 0.5rem);
+  width: 100%;
   box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  transition: all 0.2 ease-in-out;
+  transition: all 0.2s ease-in-out;
   height: fit-content;
 }
 
