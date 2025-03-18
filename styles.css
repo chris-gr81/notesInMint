@@ -68,11 +68,14 @@ body {
   border-radius: 10px;
   border: none;
 }
-
+.new-note {
+  height: 40px;
+}
 .new-note,
 .delete-note,
 .save-note {
   background-color: var(--primary-color-rgb);
+  cursor: pointer;
 }
 .new-note:hover,
 .delete-note:hover,
@@ -106,6 +109,7 @@ body {
 }
 .btn-text {
   font-size: 0.7rem;
+  white-space: nowrap;
 }
 
 .main-ct {
@@ -232,6 +236,10 @@ body {
 }
 
 @media screen and (min-width: 600px) {
+  .topnav-ct {
+    flex-direction: row-reverse;
+  }
+
   .sidebar-ct {
     grid-template-columns: repeat(4, 1fr);
   }
