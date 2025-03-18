@@ -48,7 +48,7 @@ body {
   padding-bottom: 0.8rem;
 }
 
-.navband {
+.navbar {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
@@ -229,4 +229,22 @@ body {
   gap: 0.5rem;
   width: 100%;
   margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 600px) {
+  .sidebar-ct {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main-ct {
+    flex-direction: row;
+  }
+  .sidebar-ct {
+    grid-template-columns: repeat(2, 1fr);
+    width: 25%;
+    height: auto;
+    padding: 1rem;
+  }
 }

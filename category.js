@@ -1,14 +1,16 @@
+const navbarEl = document.querySelector(".navbar");
+
 let currentCategory = "";
 
-function renderNavband() {
-  navbandEl.innerHTML = "";
-  notes = getNotes();
+function renderNavbar() {
+  navbarEl.innerHTML = "";
+  const notes = getNotes();
   const categoryList = getCategoryList(notes);
   categoryList.forEach((category) => {
     if (currentCategory == category.category) {
-      navbandEl.appendChild(createNavbandCategory(category, true));
+      navbarEl.appendChild(createNavbarCategory(category, true));
     } else {
-      navbandEl.appendChild(createNavbandCategory(category, false));
+      navbarEl.appendChild(createNavbarCategory(category, false));
     }
   });
 }
@@ -54,7 +56,7 @@ function filterCategory(notes) {
   }
 }
 
-function createNavbandCategory(category, isCat) {
+function createNavbarCategory(category, isCat) {
   const categoryBtn = document.createElement("button");
   categoryBtn.classList.add("btn");
   categoryBtn.classList.add("category-btn");
@@ -90,7 +92,7 @@ function clickOnCategory(selectedCategory) {
     e.classList.remove("selected-category");
   });
   currentCategory = selectedCategory.dataset.category;
-  renderNavband();
+  renderNavbar();
   renderPreviews();
   clearInputScreen();
 }

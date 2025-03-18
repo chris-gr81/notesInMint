@@ -5,12 +5,11 @@ const categoryInputEl = document.querySelector("#category-input");
 const titleInputEl = document.querySelector("#title-input");
 const contentInputEl = document.querySelector("#content-input");
 const btnNewNoteEl = document.querySelector("#new-note");
-const navbandEl = document.querySelector(".navband");
 
 document.addEventListener("DOMContentLoaded", () => {
   currentCategory = "Alle";
   renderPreviews();
-  renderNavband();
+  renderNavbar();
 });
 
 saveBtnEl.addEventListener("click", () => {
@@ -82,7 +81,7 @@ function getUserInput() {
   currentCategory = categoryInput;
   clearInputScreen();
   renderPreviews();
-  renderNavband();
+  renderNavbar();
 }
 
 function clickOnCard(e) {
@@ -113,7 +112,7 @@ function clickNewNote() {
   currentCategory = "Alle";
   clearInputScreen();
   renderPreviews();
-  renderNavband();
+  renderNavbar();
 }
 
 function getCurrentId() {
@@ -134,7 +133,7 @@ function deleteCurrentNote() {
   clearInputScreen();
   deleteNote(currentId);
   renderPreviews();
-  renderNavband();
+  renderNavbar();
 }
 
 function parseInput(text) {
