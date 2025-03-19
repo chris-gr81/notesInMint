@@ -23,13 +23,10 @@ function getCategoryObject() {
   const notes = getNotes();
   const categoryObject = {
     Alle: notes.length,
-    Unsortiert: countEntriesByCategory("Unsortiert"),
+    Unsortiert: 0,
   };
-  const notesForIteration = notes.filter((note) => {
-    return note.category !== "Unsortiert";
-  });
 
-  notesForIteration.forEach((note) => {
+  notes.forEach((note) => {
     if (note.category in categoryObject) {
       categoryObject[note.category]++;
     } else {
