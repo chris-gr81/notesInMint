@@ -71,6 +71,7 @@ body {
 .new-note {
   height: 40px;
 }
+
 .new-note,
 .delete-note,
 .save-note {
